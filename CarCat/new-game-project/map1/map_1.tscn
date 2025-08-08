@@ -31,7 +31,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_r7nca")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.03551, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_22lvs")
 
-[node name="RigidBody3D" type="StaticBody3D" parent="." index="2"]
+[node name="RigidBody3D" type="StaticBody3D" parent="." index="2" groups=["ground"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_uenah")

@@ -22,21 +22,26 @@ var rc
 var trrot
 var inirot
 var tf2: Transform3D
-
+@export var camrotspeed: float
 func _ready() -> void:
 	rc=$RayCast3D
 	trrot=rotation.y
 	inirot=rotation.y
-
+func floored():
+	for i in $Area3D.get_overlapping_bodies():
+		if i.is_in_group("ground"):
+			return true
+			break
+	return false
 func _process(delta: float) -> void:
-	var normal = $RayCast3D.get_collision_normal()
-
+	var normal =( $RayCast3D3.get_collision_normal()+$RayCast3D4.get_collision_normal()+$RayCast3D.get_collision_normal()+$RayCast3D2.get_collision_normal()).normalized()
+	
 	# FIX: ensure forward/right are orthogonal to normal for stable movement
 	var forward = chrbod.global_transform.basis.x
 	var right = forward.cross(normal).normalized()
 	forward = normal.cross(right).normalized()
 
-	if is_on_floor():
+	if floored():
 		tf2 = global_transform
 		tf2.basis.y = normal  
 		tf2.basis.x = -tf2.basis.z.cross(normal)
@@ -59,7 +64,7 @@ func _process(delta: float) -> void:
 	trrot -= inpdir.x * handlingspeed * delta
 	chrbod.rotation.y -= inpdir.x * handlingspeed * delta
 	
-	chrbod.rotation_degrees.y = clampf(chrbod.rotation_degrees.y, -45, 45)
+	chrbod.rotation_degrees.y = clampf(chrbod.rotation_degrees.y, -30, 30)
 	rotation.y = trrot - chrbod.rotation.y
 
 	if canjump:
@@ -75,3 +80,23 @@ func _process(delta: float) -> void:
 			canjump = true
 
 	move_and_slide()
+	var camh=$Node3D
+	#global_rotation=Vector3( wrapf(global_rotation.x,0,2*PI),wrapf(global_rotation.y,0,2*PI),wrapf(global_rotation.z,0,2*PI))
+	#camh.global_rotation=Vector3( wrapf(camh.global_rotation.x,0,2*PI),wrapf(camh.global_rotation.y,0,2*PI),wrapf(camh.global_rotation.z,0,2*PI))
+	camh.global_rotation.x=lerp_angle(camh.global_rotation.x,global_rotation.x,camrotspeed*delta)
+	camh.global_rotation.z=lerp_angle(camh.global_rotation.z,global_rotation.z,camrotspeed*delta)
+	camh.global_rotation.y=lerp_angle(camh.global_rotation.y,global_rotation.y,camrotspeed*delta)
+
+	camh.global_position=global_position
+	#if camh.global_rotation.x>global_rotation.x:
+		#camh.global_rotation.x=max(camh.global_rotation.x-camrotspeed*delta,global_rotation.x)
+	#if camh.global_rotation.x<global_rotation.x:
+		#camh.global_rotation.x=min(camh.global_rotation.x+camrotspeed*delta,global_rotation.x)
+	#if camh.global_rotation.y>global_rotation.y:
+		#camh.global_rotation.y=max(camh.global_rotation.y-camrotspeed*delta,global_rotation.y)
+	#if camh.global_rotation.y<global_rotation.y:
+		#camh.global_rotation.y=min(camh.global_rotation.y+camrotspeed*delta,global_rotation.y)
+	#if camh.global_rotation.z>global_rotation.z:
+		#camh.global_rotation.z=max(camh.global_rotation.z-camrotspeed*delta,global_rotation.z)
+	#if camh.global_rotation.z<global_rotation.z:
+		#camh.global_rotation.z=min(camh.global_rotation.z+camrotspeed*delta,global_rotation.z)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://tqge3tmrqrq2"]
+[gd_scene load_steps=9 format=3 uid="uid://tqge3tmrqrq2"]
 
 [ext_resource type="Script" uid="uid://blrnwbsb0vc3h" path="res://chars/charactertemplate.gd" id="1_lhgf4"]
 [ext_resource type="PackedScene" uid="uid://big7r2kc8a2k8" path="res://chars/car_1.tscn" id="1_oq1pu"]
@@ -23,22 +23,22 @@ size = Vector3(1.99597, 1.5332, 2.04712)
 radius = 1.08904
 height = 2.17809
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("chrbod", "camera")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_j01rm"]
+size = Vector3(2.90751, 0.654785, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("chrbod")]
+physics_interpolation_mode = 1
 script = ExtResource("1_lhgf4")
-speedbasic = 10.0
+speedbasic = 25.0
 jumpspeed = 1.0
 speedupcurve = SubResource("Curve_lhgf4")
 handlingspeed = 5.0
 chrbod = NodePath("CharacterBody3D")
-camera = NodePath("Camera3D")
 jumpcurve = SubResource("Curve_j01rm")
 jumpheight = 5.0
 bendstr = 0.5
 jumpbendcurve = SubResource("Curve_kwwdy")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0.149535, -0.988756, 0, 0.988756, 0.149535, 1, 6.5364e-09, -4.32199e-08, -7.285, 4.83, 0)
-current = true
+camrotspeed = 1.5
 
 [node name="CharacterBody3D" type="Area3D" parent="."]
 
@@ -53,4 +53,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343948, 0)
 shape = SubResource("CapsuleShape3D_j01rm")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0301734, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96501, -0.0301732, -0.000341177)
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.965838, -0.0301734, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471842, -0.0301732, 0.963184)
+
+[node name="RayCast3D4" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00735325, -0.0301734, -0.963525)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0055809, -0.468637, 0)
+shape = SubResource("BoxShape3D_j01rm")
+
+[node name="Node3D" type="Node3D" parent="."]
+top_level = true
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0.149535, -0.988756, 0, 0.988756, 0.149535, 1, 6.53639e-09, -4.32199e-08, -7.285, 4.83, 0)
