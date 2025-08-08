@@ -25,9 +25,9 @@ environment = SubResource("Environment_jtydb")
 transform = Transform3D(11.65, 0, 0, 0, 11.65, 0, 0, 0, 11.65, 0.809027, 0, 0.267147)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7383, 48.3581, 248.975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6455, 48.3581, -84.8986)
 use_collision = true
 size = Vector3(100, 1, 100)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_c42dk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6455, 49.4283, -84.8986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6455, 50.0238, -84.8986)
