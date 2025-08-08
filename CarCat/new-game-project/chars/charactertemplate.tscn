@@ -8,19 +8,20 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 0.179775), 0.0, 0.0, 0, 0, 
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_j01rm"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.473404, 1), 0.0, 0.0, 0, 0, Vector2(0.914894, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.384036, 1), 0.0, 0.0, 0, 0, Vector2(0.760542, 1), 0.0, 0.0, 0, 0, Vector2(0.948795, 0.108957), 0.0, 0.0, 0, 0, Vector2(1, 0.0592574), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="Curve" id="Curve_kwwdy"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.398936, 1), 0.0, 0.0, 0, 0, Vector2(0.771277, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.215361, 1), 0.0, 0.0, 0, 0, Vector2(0.379518, -0.199891), -7.44373, -7.44373, 0, 0, Vector2(0.739458, -1), 0.0, 0.0, 0, 0, Vector2(0.787651, -0.987985), 0.0, 0.0, 0, 0, Vector2(0.947289, -0.924085), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lhgf4"]
 radius = 0.689009
 
 [node name="CharacterBody3D" type="Node3D" node_paths=PackedStringArray("chrbod", "camera")]
 script = ExtResource("1_lhgf4")
-jumpspeed = 2.0
+jumpspeed = 1.0
 speedupcurve = SubResource("Curve_lhgf4")
 handlingspeed = 5.0
 chrbod = NodePath("CharacterBody3D")

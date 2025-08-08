@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		print(jumpcurve.sample(timejumping/jumpspeed))
 		chrbod.position.y=jumpcurve.sample(timejumping/jumpspeed)*jumpheight
 		timejumping+=delta
-		$CharacterBody3D/car1.get_child(0).get_surface_override_material(0).set_shader_parameter("bend",jumpcurve.sample(timejumping/jumpspeed)*bendstr)
+		$CharacterBody3D/car1.get_child(0).get_surface_override_material(0).set_shader_parameter("bend",jumpbendcurve.sample(timejumping/jumpspeed)*bendstr)
 		if timejumping>=jumpspeed:
 			canjump=true
 			
