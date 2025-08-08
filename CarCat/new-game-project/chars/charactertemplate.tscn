@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tqge3tmrqrq2"]
+[gd_scene load_steps=8 format=3 uid="uid://tqge3tmrqrq2"]
 
 [ext_resource type="Script" uid="uid://blrnwbsb0vc3h" path="res://chars/charactertemplate.gd" id="1_lhgf4"]
 [ext_resource type="PackedScene" uid="uid://big7r2kc8a2k8" path="res://chars/car_1.tscn" id="1_oq1pu"]
@@ -16,11 +16,16 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.215361, 1), 0.0, 0.0, 0, 0, Vector2(0.379518, -0.199891), -7.44373, -7.44373, 0, 0, Vector2(0.739458, -1), 0.0, 0.0, 0, 0, Vector2(0.787651, -0.987985), 0.0, 0.0, 0, 0, Vector2(0.947289, -0.924085), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 7
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lhgf4"]
-radius = 0.689009
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhgf4"]
+size = Vector3(1.99597, 1.5332, 2.04712)
 
-[node name="CharacterBody3D" type="Node3D" node_paths=PackedStringArray("chrbod", "camera")]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j01rm"]
+radius = 1.08904
+height = 2.17809
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("chrbod", "camera")]
 script = ExtResource("1_lhgf4")
+speedbasic = 10.0
 jumpspeed = 1.0
 speedupcurve = SubResource("Curve_lhgf4")
 handlingspeed = 5.0
@@ -33,11 +38,19 @@ jumpbendcurve = SubResource("Curve_kwwdy")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.149535, -0.988756, 0, 0.988756, 0.149535, 1, 6.5364e-09, -4.32199e-08, -7.285, 4.83, 0)
+current = true
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135956, 0.340396, -0.171738)
-shape = SubResource("CapsuleShape3D_lhgf4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497986, 0.266602, 0)
+shape = SubResource("BoxShape3D_lhgf4")
 
 [node name="car1" parent="CharacterBody3D" instance=ExtResource("1_oq1pu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343948, 0)
+shape = SubResource("CapsuleShape3D_j01rm")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0301734, 0)

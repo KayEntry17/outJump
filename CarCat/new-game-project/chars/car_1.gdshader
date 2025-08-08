@@ -1,5 +1,5 @@
 shader_type spatial;
-//render_mode unshaded;
+render_mode unshaded;
 render_mode cull_disabled;
 uniform float bend;
 uniform vec3 albedo: source_color;
