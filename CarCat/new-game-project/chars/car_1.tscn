@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://big7r2kc8a2k8"]
+
+[ext_resource type="PackedScene" uid="uid://du6b00xivij2f" path="res://car1.blend" id="1_0klw7"]
+[ext_resource type="Shader" uid="uid://ddn5rvn4qxi1o" path="res://chars/car_1.gdshader" id="2_hlb0k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0744y"]
+render_priority = 0
+shader = ExtResource("2_hlb0k")
+shader_parameter/bend = 0.0
+shader_parameter/albedo = Color(0.266667, 0.403922, 0.478431, 1)
+
+[node name="car1" instance=ExtResource("1_0klw7")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_0744y")
