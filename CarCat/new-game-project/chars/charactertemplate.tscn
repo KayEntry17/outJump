@@ -94,15 +94,15 @@ jumpspeed = 1.0
 speedupcurve = SubResource("Curve_lhgf4")
 accspeed = 10.0
 descspeed = 5.0
-maxspeed = 30.0
-handlingspeed = 5.0
+maxspeed = 70.0
+handlingspeed = 2.0
 chrbod = NodePath("CharacterBody3D")
 jumpcurve = SubResource("Curve_j01rm")
 jumpheight = 5.0
 bendstr = 0.5
 jumpbendcurve = SubResource("Curve_kwwdy")
 speeduprefcurve = SubResource("Curve_jtp5g")
-camrotspeed = 1.5
+camrotspeed = 15.0
 
 [node name="CharacterBody3D" type="Area3D" parent="."]
 

@@ -1,33 +1,91 @@
-[gd_scene load_steps=6 format=3 uid="uid://c60ckmfx61axw"]
+[gd_scene load_steps=17 format=3 uid="uid://c60ckmfx61axw"]
 
 [ext_resource type="PackedScene" uid="uid://u2ikc3qh3svs" path="res://map1/map_1.tscn" id="1_7vjxm"]
 [ext_resource type="PackedScene" uid="uid://tqge3tmrqrq2" path="res://chars/charactertemplate.tscn" id="2_c42dk"]
+[ext_resource type="Shader" uid="uid://bp7gt0f4kmucf" path="res://map1/lv1bg.gdshader" id="3_jtydb"]
+[ext_resource type="Shader" uid="uid://bkrj1080b366h" path="res://map1/3DREND.gdshader" id="4_nyo4u"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7vjxm"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="Sky" id="Sky_7vjxm"]
 
-[sub_resource type="Sky" id="Sky_c42dk"]
-sky_material = SubResource("ProceduralSkyMaterial_7vjxm")
+[sub_resource type="Environment" id="Environment_c42dk"]
+sky = SubResource("Sky_7vjxm")
+adjustment_enabled = true
+adjustment_saturation = 1.95
 
-[sub_resource type="Environment" id="Environment_jtydb"]
-background_mode = 2
-sky = SubResource("Sky_c42dk")
-tonemap_mode = 2
-glow_enabled = true
+[sub_resource type="Gradient" id="Gradient_rslpf"]
+offsets = PackedFloat32Array(0, 0.564394, 0.886364)
+colors = PackedColorArray(0, 0.890196, 1, 1, 0.87451, 0.388235, 0.94902, 1, 0.176427, 0.00442462, 0.202218, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_skkpn"]
+gradient = SubResource("Gradient_rslpf")
+
+[sub_resource type="Gradient" id="Gradient_bjo4t"]
+offsets = PackedFloat32Array(0, 0.637188)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_weawt"]
+gradient = SubResource("Gradient_bjo4t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_36n25"]
+shader = ExtResource("3_jtydb")
+shader_parameter/ro = Vector3(0, 0, -3)
+shader_parameter/rotation = Vector3(0, 0, -2.78)
+shader_parameter/grad = SubResource("GradientTexture1D_skkpn")
+shader_parameter/grad2 = SubResource("GradientTexture1D_weawt")
+shader_parameter/stepm = 40
+
+[sub_resource type="Gradient" id="Gradient_0pmb7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_br423"]
+gradient = SubResource("Gradient_0pmb7")
+width = 360
+height = 360
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqw60"]
+size = Vector3(1000, 1000, 1000)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jtydb"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vqnc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_nyo4u")
+shader_parameter/noisetex = SubResource("ViewportTexture_jtydb")
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jtydb")
+environment = SubResource("Environment_c42dk")
 
 [node name="map1" parent="." instance=ExtResource("1_7vjxm")]
-transform = Transform3D(11.65, 0, 0, 0, 11.65, 0, 0, 0, 11.65, 0.809027, 0, 0.267147)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 51.4184, 0, 63.5289)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7383, 48.3581, 248.975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1715, 48.3581, 311.087)
+visible = false
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_c42dk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6455, 49.4283, -84.8986)
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("tdbg") instance=ExtResource("2_c42dk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8744, 49.428, -21.6373)
+tdbg = NodePath("../SubViewport/Sprite2D2")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(640, 360)
+size_2d_override_stretch = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewport"]
+material = SubResource("ShaderMaterial_36n25")
+position = Vector2(320, 180)
+texture = SubResource("GradientTexture2D_br423")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+position = Vector2(320, 180)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nqw60")
+surface_material_override/0 = SubResource("ShaderMaterial_5vqnc")

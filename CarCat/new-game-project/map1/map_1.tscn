@@ -1,14 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://u2ikc3qh3svs"]
+[gd_scene load_steps=9 format=3 uid="uid://u2ikc3qh3svs"]
 
 [ext_resource type="PackedScene" uid="uid://ds2kansap7ruh" path="res://map1/map1.blend" id="1_uenah"]
+[ext_resource type="Shader" uid="uid://l2lh6ty1ibed" path="res://map1/map_1.gdshader" id="2_22lvs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uenah"]
 cull_mode = 2
 shading_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7nca"]
-shading_mode = 0
-albedo_color = Color(0, 0, 1, 1)
+[sub_resource type="Gradient" id="Gradient_22lvs"]
+offsets = PackedFloat32Array(0, 0.482993, 1)
+colors = PackedColorArray(0.807843, 0.0705882, 0.862745, 1, 0.94, 0.4982, 0.814823, 1, 0.25, 0.825, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r7nca"]
+gradient = SubResource("Gradient_22lvs")
+fill_from = Vector2(0.025641, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7nca"]
+render_priority = 0
+shader = ExtResource("2_22lvs")
+shader_parameter/noisetex = SubResource("GradientTexture2D_r7nca")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22lvs"]
 transparency = 2
@@ -25,7 +36,7 @@ data = PackedVector3Array(0.2556, -0.2004, -0.596, 0.0501, -0.4636, 0.063, -0.16
 
 [node name="BézierCurve" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_uenah")
-surface_material_override/1 = SubResource("StandardMaterial3D_r7nca")
+surface_material_override/1 = SubResource("ShaderMaterial_r7nca")
 
 [node name="BézierCurve_001" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.03551, 0)

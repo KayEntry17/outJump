@@ -18,7 +18,7 @@ extends CharacterBody3D
 @export var bendstr:float
 @export var jumpbendcurve:Curve
 @export var speeduprefcurve:Curve
-
+@export var tdbg: Node2D
 var canjump:bool=true
 var timejumping
 var rc
@@ -79,7 +79,12 @@ func _process(delta: float) -> void:
 		tf2.basis = tf2.basis.orthonormalized()
 		global_transform = tf2
 	else:
-		velocity.y = -10
+		velocity.y = -50
+		if speedfin>0:
+			speedfin-=descspeed*delta
+			print(speedfin)
+		else:
+			speedfin=0
 		pass
 	trrot -= inpdir.x * handlingspeed * delta
 	chrbod.rotation.y -= inpdir.x * handlingspeed * delta
@@ -98,7 +103,7 @@ func _process(delta: float) -> void:
 			.set_shader_parameter("bend", jumpbendcurve.sample(timejumping / jumpspeed) * bendstr)
 		if timejumping >= jumpspeed:
 			canjump = true
-
+	
 	move_and_slide()
 	var camh=$Node3D
 	#global_rotation=Vector3( wrapf(global_rotation.x,0,2*PI),wrapf(global_rotation.y,0,2*PI),wrapf(global_rotation.z,0,2*PI))
@@ -108,4 +113,6 @@ func _process(delta: float) -> void:
 	camh.global_rotation.y=lerp_angle(camh.global_rotation.y,global_rotation.y,camrotspeed*delta)
 
 	camh.global_position=global_position
-	
+	#tdbg.material.set_shader_parameter("ro",(camh.global_position/10).rotated(Vector3.UP,-PI/2))
+	tdbg.material.set_shader_parameter("rotation",Vector3(camh.global_rotation.y,camh.global_rotation.x,camh.global_rotation.z))
+	tdbg.material.set_shader_parameter("ro",Vector3(camh.global_position.z,-camh.global_position.y,camh.global_position.x)/5)
