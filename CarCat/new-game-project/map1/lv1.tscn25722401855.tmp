@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c60ckmfx61axw"]
+
+[ext_resource type="PackedScene" uid="uid://u2ikc3qh3svs" path="res://map1/map_1.tscn" id="1_7vjxm"]
+[ext_resource type="PackedScene" uid="uid://tqge3tmrqrq2" path="res://chars/charactertemplate.tscn" id="2_c42dk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7vjxm"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_c42dk"]
+sky_material = SubResource("ProceduralSkyMaterial_7vjxm")
+
+[sub_resource type="Environment" id="Environment_jtydb"]
+background_mode = 2
+sky = SubResource("Sky_c42dk")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jtydb")
+
+[node name="map1" parent="." instance=ExtResource("1_7vjxm")]
+transform = Transform3D(11.65, 0, 0, 0, 11.65, 0, 0, 0, 11.65, 0.809027, 0, 0.267147)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7383, 48.3581, 248.975)
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_c42dk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6455, 49.4283, -84.8986)
+offshoreminus = null
+damageknockbackspeed = null
