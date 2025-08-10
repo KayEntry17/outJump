@@ -15,10 +15,6 @@ run/main_scene="uid://c60ckmfx61axw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Talo="*res://addons/talo/talo_manager.gd"
-
 [display]
 
 window/size/viewport_width=639
@@ -28,7 +24,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/talo/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [global_group]
 

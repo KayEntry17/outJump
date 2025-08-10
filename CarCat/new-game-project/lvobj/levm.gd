@@ -36,5 +36,8 @@ func goalcheck():
 			laptimes.append(0.0)
 			curlap+=1
 			#print(curlap)
+		else:
+			#Talo.leaderboards.add_entry()
+			pass
 
 		

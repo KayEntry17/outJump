@@ -32,6 +32,7 @@ theme_override_font_sizes/font_size = 0
 
 [node name="Label" type="Label" parent="Label2"]
 custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -42,6 +43,7 @@ text = "00
 
 [node name="Label2" type="Label" parent="Label2"]
 custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
 offset_left = 18.0
 offset_right = 58.0
 offset_bottom = 23.0
@@ -52,6 +54,7 @@ text = "00"
 
 [node name="Label3" type="Label" parent="Label2"]
 custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
 offset_left = 39.0
 offset_right = 79.0
 offset_bottom = 25.0
