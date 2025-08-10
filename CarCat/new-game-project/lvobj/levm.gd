@@ -7,6 +7,8 @@ var totaltime
 var active
 var curlap
 @export var lapam:int
+@export var mapid:int
+
 func _ready() -> void:
 	active=true
 	nextcp=1
@@ -38,6 +40,9 @@ func goalcheck():
 			#print(curlap)
 		else:
 			#Talo.leaderboards.add_entry()
+			Leaderboard.add(Leaderboard.namepl,str(totaltime),str(mapid))
+			print([Leaderboard.namepl,str(totaltime),str(mapid)])
+			Leaderboard.refresh()
 			get_tree().reload_current_scene()
 
 		

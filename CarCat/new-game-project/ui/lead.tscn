@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1oj0gy7rul6e"]
+
+[ext_resource type="Texture2D" uid="uid://cme67iy62nc8v" path="res://Sprite-0002.png" id="1_gq12d"]
+[ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="2_67x3r"]
+[ext_resource type="Texture2D" uid="uid://dnkcd51anlfa2" path="res://Sprite-00032.png" id="3_l7a42"]
+[ext_resource type="FontFile" uid="uid://ghb8remxneqc" path="res://fonts/8-bit Arcade In.ttf" id="4_mogyk"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+clip_children = 2
+offset_right = 168.0
+offset_bottom = 66.0
+texture = ExtResource("1_gq12d")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Sprite2D2" parent="." instance=ExtResource("2_67x3r")]
+position = Vector2(81, 67)
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="Sprite2D3" parent="." instance=ExtResource("2_67x3r")]
+position = Vector2(83, 0)
+rotation = 3.14159
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+clip_children = 2
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 100.0
+texture = ExtResource("3_l7a42")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(157, 5.315)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 163.0
+offset_bottom = 52.0
+
+[node name="Label" type="Label" parent="Control"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_mogyk")
+theme_override_font_sizes/font_size = 16
+text = "LAP 1"
+
+[node name="Label2" type="Label" parent="Control"]
+custom_minimum_size = Vector2(55.08, 13.98)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_mogyk")
+theme_override_font_sizes/font_size = 0
+
+[node name="Label" type="Label" parent="Control/Label2"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_mogyk")
+theme_override_font_sizes/font_size = 16
+text = "00
+"
+
+[node name="Label2" type="Label" parent="Control/Label2"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_left = 18.0
+offset_right = 58.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_mogyk")
+theme_override_font_sizes/font_size = 16
+text = "00"
+
+[node name="Label3" type="Label" parent="Control/Label2"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_left = 39.0
+offset_right = 79.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_mogyk")
+theme_override_font_sizes/font_size = 16
+text = "00
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Control4" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control4"]
+layout_mode = 2
+offset_top = 12.0
+offset_right = 158.0
+offset_bottom = 92.0

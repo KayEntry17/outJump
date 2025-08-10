@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://c32ocg4y6jer6"]
+
+[ext_resource type="Texture2D" uid="uid://cme67iy62nc8v" path="res://Sprite-0002.png" id="1_65nit"]
+[ext_resource type="Script" uid="uid://d3kpuwarbkm8o" path="res://ui/leadb.gd" id="1_hebsm"]
+[ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="2_hebsm"]
+[ext_resource type="Texture2D" uid="uid://dnkcd51anlfa2" path="res://Sprite-00032.png" id="3_xyt80"]
+[ext_resource type="StyleBox" uid="uid://ck788s7ue2chg" path="res://ui/leadb.tres" id="4_hebsm"]
+[ext_resource type="Shader" uid="uid://ydsify6347cs" path="res://invert.gdshader" id="5_f88bj"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_hebsm"]
+color = Color(1, 1, 1, 1)
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xyt80"]
+color = Color(1, 1, 1, 1)
+thickness = 5
+vertical = true
+
+[sub_resource type="Theme" id="Theme_xyt80"]
+VScrollBar/styles/grabber = ExtResource("4_hebsm")
+VScrollBar/styles/grabber_highlight = ExtResource("4_hebsm")
+VScrollBar/styles/grabber_pressed = ExtResource("4_hebsm")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_hebsm")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxLine_xyt80")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypfvs"]
+shader = ExtResource("5_f88bj")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hebsm")
+updtime = "0"
+updtime1 = 1.0
+active = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+clip_children = 2
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 113.215
+texture = ExtResource("1_65nit")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Sprite2D2" parent="NinePatchRect" instance=ExtResource("2_hebsm")]
+position = Vector2(81, 114)
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="Sprite2D3" parent="NinePatchRect" instance=ExtResource("2_hebsm")]
+position = Vector2(83, 0)
+rotation = 3.14159
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
+clip_children = 2
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 113.215
+texture = ExtResource("3_xyt80")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Control4" type="ScrollContainer" parent="NinePatchRect/MarginContainer"]
+clip_contents = false
+layout_mode = 2
+theme = SubResource("Theme_xyt80")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/Control4"]
+layout_mode = 2
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_ypfvs")
+offset_right = 168.0
+offset_bottom = 113.215
+texture = ExtResource("1_65nit")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2

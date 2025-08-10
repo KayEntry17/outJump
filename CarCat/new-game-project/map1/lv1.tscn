@@ -105,10 +105,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2238.51, 5799.02, 1578.25)
 
 [node name="Goal" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("5_nyo4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2294, 0.152047, -15.7758)
-manager = NodePath("../Node")
+manager = NodePath("../levm")
 
 [node name="Control" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("6_rslpf")]
-manager = NodePath("../Node")
+manager = NodePath("../levm")
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 texture_filter = 2
@@ -123,7 +123,7 @@ grow_horizontal = 0
 texture = SubResource("ViewportTexture_36n25")
 expand_mode = 1
 
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("chekcp", "goal")]
+[node name="levm" type="Node" parent="." node_paths=PackedStringArray("chekcp", "goal")]
 script = ExtResource("7_36n25")
 chekcp = [NodePath("../Node3D3"), NodePath("../Node3D4"), NodePath("../Node3D5"), NodePath("../Node3D6")]
 goal = NodePath("../Goal")
@@ -131,22 +131,22 @@ lapam = 2
 
 [node name="Node3D3" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_bjo4t")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 77.3566, 0.36678, 46.3506)
-manager = NodePath("../Node")
+manager = NodePath("../levm")
 id = 1
 
 [node name="Node3D4" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_bjo4t")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -80.3364, 0.36678, 46.3506)
-manager = NodePath("../Node")
+manager = NodePath("../levm")
 id = 2
 
 [node name="Node3D5" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_bjo4t")]
 transform = Transform3D(-7.93371, 0, 1.02773, 0, 8, 0, -1.02773, 0, -7.93371, -90.3268, 40.7712, -113.603)
-manager = NodePath("../Node")
+manager = NodePath("../levm")
 id = 3
 
 [node name="Node3D6" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_bjo4t")]
 transform = Transform3D(7.2323, 0, 3.41962, 0, 8, 0, -3.41962, 0, 7.2323, 17.2773, 23.7529, -113.603)
-manager = NodePath("../Node")
+manager = NodePath("../levm")
 id = 4
 
 [node name="SubViewport2" type="SubViewport" parent="."]

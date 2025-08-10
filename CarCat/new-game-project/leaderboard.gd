@@ -3,6 +3,7 @@ const url_submit="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzqVAKp0LrtlxCyK
 const url_data="https://opensheet.elk.sh//1yT_n7sMI_2J7JazPiKxnuWaQAIyqN4m99B2IPnnKeFI/data"
 const headers=["Content-Type: application/x-www-form-urlencoded"]
 var client=HTTPClient.new()
+var namepl="TheLastYatagarasu"
 #entry.1679080871
 #JohnPersona
 #entry.791717199
@@ -20,6 +21,9 @@ func _ready() -> void:
 	leaderb=[]
 	refresh()
 func http_submit(_result,_responce_code,_headers,_body):
+	leaderbsort={}
+	leaderb=[]
+
 	#http.queue_free()
 	#print(73456387)
 	if !_result:
@@ -32,7 +36,7 @@ func http_submit(_result,_responce_code,_headers,_body):
 				leaderbsort[n[2]]=[]
 			leaderbsort[n[2]].append(n)
 		for n in leaderbsort:
-			n.sort_custom(sort_ascending)
+			leaderbsort[n].sort_custom(sort_ascending)
 		print(leaderbsort)
 		
 
@@ -53,6 +57,7 @@ func add(name, time, mapid):
 	if err:
 		ht.queue_free()
 func refresh():
+
 	var ht=HTTPRequest.new()
 	ht.request_completed.connect(http_submit)
 	add_child(ht)
