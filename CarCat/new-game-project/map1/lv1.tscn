@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c60ckmfx61axw"]
+[gd_scene load_steps=19 format=3 uid="uid://c60ckmfx61axw"]
 
 [ext_resource type="PackedScene" uid="uid://u2ikc3qh3svs" path="res://map1/map_1.tscn" id="1_7vjxm"]
 [ext_resource type="PackedScene" uid="uid://tqge3tmrqrq2" path="res://chars/charactertemplate.tscn" id="2_c42dk"]
 [ext_resource type="Shader" uid="uid://bp7gt0f4kmucf" path="res://map1/lv1bg.gdshader" id="3_jtydb"]
 [ext_resource type="Shader" uid="uid://bkrj1080b366h" path="res://map1/3DREND.gdshader" id="4_nyo4u"]
+[ext_resource type="PackedScene" uid="uid://dcpbiilpmsmec" path="res://hgh/Goalgameplay.tscn" id="5_nyo4u"]
+[ext_resource type="PackedScene" uid="uid://c5t0s07cgm1bd" path="res://ui.tscn" id="6_rslpf"]
 
 [sub_resource type="Sky" id="Sky_7vjxm"]
 
@@ -89,3 +91,11 @@ position = Vector2(320, 180)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_nqw60")
 surface_material_override/0 = SubResource("ShaderMaterial_5vqnc")
+
+[node name="Node3D" parent="." instance=ExtResource("5_nyo4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2238.51, 5799.02, 1578.25)
+
+[node name="Node3D2" parent="." instance=ExtResource("5_nyo4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2294, 0.152047, -15.7758)
+
+[node name="Control" parent="." instance=ExtResource("6_rslpf")]

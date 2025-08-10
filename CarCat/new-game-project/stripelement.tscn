@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://7d2xhyt2nv38"]
+
+[ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="1_hno06"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_hno06")]
+position = Vector2(5, 11)

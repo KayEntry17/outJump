@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	if abs(inpdir.x) <= 0.1:
 		inpdir.x = 0
 
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("gasgasgas" ):
 		$CharacterBody3D/car1/Node3D/GPUParticles3D.emitting=true
 		if speedfin<maxspeed:
 			speedfin+=accspeed*delta
@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 	rotation.y = trrot - chrbod.rotation.y
 
 	if canjump:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("jump"):
 			canjump = false
 			timejumping = 0
 	else:

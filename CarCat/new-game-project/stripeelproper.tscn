@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cagrbpd4chouv"]
+
+[ext_resource type="Shader" uid="uid://klk42y8ar1md" path="res://stripelement.gdshader" id="1_werx3"]
+[ext_resource type="Texture2D" uid="uid://dot8juny3mjnt" path="res://Sprite-0001.png" id="2_v5eg0"]
+
+[sub_resource type="Gradient" id="Gradient_byj7v"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eaco7"]
+gradient = SubResource("Gradient_byj7v")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byj7v"]
+shader = ExtResource("1_werx3")
+shader_parameter/noisetex = SubResource("GradientTexture2D_eaco7")
+shader_parameter/speed = 0.2
+
+[node name="Sprite2D" type="Sprite2D"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_byj7v")
+texture = ExtResource("2_v5eg0")
+region_enabled = true
+region_rect = Rect2(0, 0, 58.544, 12)

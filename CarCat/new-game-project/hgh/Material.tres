@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://t1jlto42d2o3"]
+
+[resource]
+resource_name = "Material"
+transparency = 4
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+metadata/extras = {
+"poliigon_props": {}
+}

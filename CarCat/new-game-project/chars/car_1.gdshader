@@ -1,8 +1,10 @@
 shader_type spatial;
 render_mode unshaded;
 render_mode cull_disabled;
+render_mode depth_test_disabled;
 uniform float bend;
 uniform vec3 albedo: source_color;
+uniform sampler2D noisetex;
 
 void vertex() {
 	float vecy=VERTEX.y;
@@ -14,6 +16,8 @@ void vertex() {
 
 void fragment() {
 	ALBEDO=albedo;
+	ALBEDO=texture(noisetex,SCREEN_UV).xyz;
+
 }
 //
 //void light() {

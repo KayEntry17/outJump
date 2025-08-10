@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://c0inj7wutwdnh"]
+
+[ext_resource type="PackedScene" uid="uid://cqqs0w4gc3k5j" path="res://map1/goalpost.blend" id="1_ncdj7"]
+[ext_resource type="Shader" uid="uid://l2lh6ty1ibed" path="res://map1/map_1.gdshader" id="2_e8fpu"]
+[ext_resource type="Shader" uid="uid://chxtlrqfd3j0n" path="res://hgh/outli.gdshader" id="2_vldls"]
+[ext_resource type="Shader" uid="uid://b2ql6bkmjvdwq" path="res://hgh/goalpost.gdshader" id="4_538kj"]
+[ext_resource type="Texture2D" uid="uid://dot8juny3mjnt" path="res://Sprite-0001.png" id="5_qa3y3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjsmu"]
+render_priority = 0
+shader = ExtResource("2_vldls")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.05
+
+[sub_resource type="Gradient" id="Gradient_vldls"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjsmu"]
+gradient = SubResource("Gradient_vldls")
+fill_from = Vector2(0.025641, 0.92735)
+fill_to = Vector2(0, 0.0213675)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_538kj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_mjsmu")
+shader = ExtResource("2_e8fpu")
+shader_parameter/noisetex = SubResource("GradientTexture2D_mjsmu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_own1c"]
+render_priority = 0
+shader = ExtResource("4_538kj")
+shader_parameter/noisetex = ExtResource("5_qa3y3")
+shader_parameter/speed = 1.335
+shader_parameter/frequency_y = 1.95
+shader_parameter/frequency_x = 0.0
+shader_parameter/amplitude_y = 0.075
+shader_parameter/amplitude_x = 0.045
+shader_parameter/inclination = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_538kj"]
+size = Vector3(8.06006, 6.79199, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qa3y3"]
+height = 5.81104
+radius = 0.317871
+
+[node name="goalpost" instance=ExtResource("1_ncdj7")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_538kj")
+surface_material_override/1 = SubResource("ShaderMaterial_own1c")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0651855, 2.896, 0)
+shape = SubResource("BoxShape3D_538kj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40884, 1.90552, 0)
+shape = SubResource("CylinderShape3D_qa3y3")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40884, 1.90552, 0)
+shape = SubResource("CylinderShape3D_qa3y3")

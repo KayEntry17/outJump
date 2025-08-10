@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcpbiilpmsmec"]
+
+[ext_resource type="PackedScene" uid="uid://c0inj7wutwdnh" path="res://hgh/goalpost.tscn" id="1_7ncrk"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="goalpost" parent="." instance=ExtResource("1_7ncrk")]
+transform = Transform3D(5.175, 0, 0, 0, 4.55, 0, 0, 0, 5, 0, 0, 0)

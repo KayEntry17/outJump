@@ -1,15 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://big7r2kc8a2k8"]
+[gd_scene load_steps=7 format=3 uid="uid://big7r2kc8a2k8"]
 
 [ext_resource type="PackedScene" uid="uid://du6b00xivij2f" path="res://car1.blend" id="1_0klw7"]
 [ext_resource type="Shader" uid="uid://ddn5rvn4qxi1o" path="res://chars/car_1.gdshader" id="2_hlb0k"]
+
+[sub_resource type="Gradient" id="Gradient_0744y"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 1, 0.383333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7gj52"]
+gradient = SubResource("Gradient_0744y")
+fill_from = Vector2(0.00854701, 0.551282)
+fill_to = Vector2(0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0744y"]
 render_priority = 0
 shader = ExtResource("2_hlb0k")
 shader_parameter/bend = 0.0
-shader_parameter/albedo = Color(0.2945, 0.95, 0.2945, 1)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/noisetex = SubResource("GradientTexture2D_7gj52")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0744y"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 1, 1, 0)
 
 [node name="car1" instance=ExtResource("1_0klw7")]
 
 [node name="Cube" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_0744y")
+surface_material_override/1 = SubResource("StandardMaterial3D_0744y")
