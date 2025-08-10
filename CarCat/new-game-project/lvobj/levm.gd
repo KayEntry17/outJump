@@ -38,6 +38,6 @@ func goalcheck():
 			#print(curlap)
 		else:
 			#Talo.leaderboards.add_entry()
-			pass
+			get_tree().reload_current_scene()
 
 		

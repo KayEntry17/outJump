@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5t0s07cgm1bd"]
+[gd_scene load_steps=12 format=3 uid="uid://c5t0s07cgm1bd"]
 
 [ext_resource type="Shader" uid="uid://8fhfn34yaujn" path="res://ui.gdshader" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://dot8juny3mjnt" path="res://Sprite-0001.png" id="1_m6e0p"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="4_nltto"]
 [ext_resource type="Texture2D" uid="uid://dnkcd51anlfa2" path="res://Sprite-00032.png" id="5_y4yjw"]
 [ext_resource type="FontFile" uid="uid://ghb8remxneqc" path="res://fonts/8-bit Arcade In.ttf" id="6_y4yjw"]
+[ext_resource type="Shader" uid="uid://ydsify6347cs" path="res://invert.gdshader" id="8_ok7cu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok7cu"]
+shader = ExtResource("8_ok7cu")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6e0p"]
 shader = ExtResource("1_fyqef")
@@ -164,6 +168,18 @@ layout_mode = 2
 offset_top = 12.0
 offset_right = 158.0
 offset_bottom = 92.0
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_ok7cu")
+layout_mode = 1
+offset_right = 168.0
+offset_bottom = 66.0
+texture = ExtResource("4_n5ude")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
