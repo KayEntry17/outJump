@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmgtpxw012ekc"]
+
+[ext_resource type="PackedScene" uid="uid://x433mqmxcb7y" path="res://map1/icon.blend" id="1_6ijq0"]
+
+[node name="icon" instance=ExtResource("1_6ijq0")]

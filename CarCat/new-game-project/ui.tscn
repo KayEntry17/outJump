@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5t0s07cgm1bd"]
+[gd_scene load_steps=10 format=3 uid="uid://c5t0s07cgm1bd"]
 
 [ext_resource type="Shader" uid="uid://8fhfn34yaujn" path="res://ui.gdshader" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://dot8juny3mjnt" path="res://Sprite-0001.png" id="1_m6e0p"]
+[ext_resource type="Script" uid="uid://dxi3vnogvbck1" path="res://ui.gd" id="1_ok7cu"]
 [ext_resource type="PackedScene" uid="uid://7d2xhyt2nv38" path="res://stripelement.tscn" id="3_27fn8"]
 [ext_resource type="Texture2D" uid="uid://cme67iy62nc8v" path="res://Sprite-0002.png" id="4_n5ude"]
 [ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="4_nltto"]
@@ -12,12 +13,12 @@
 shader = ExtResource("1_fyqef")
 shader_parameter/scanline_color = Color(0, 0, 0, 1)
 shader_parameter/flicker_color = Color(0, 0, 0, 1)
-shader_parameter/scanlines_count = 13.995
-shader_parameter/scanlines_intensity = 0.05
+shader_parameter/scanlines_count = 5.965
+shader_parameter/scanlines_intensity = 0.01
 shader_parameter/flicker_speed = 30.0
 shader_parameter/flicker_intensity = 0.033
-shader_parameter/color_offset = 1.0
-shader_parameter/blur = 0.23
+shader_parameter/color_offset = 3.05
+shader_parameter/blur = 0.31
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ok7cu")
 
 [node name="Sprite-0001" type="Sprite2D" parent="."]
 visible = false
@@ -45,11 +47,9 @@ region_rect = Rect2(0, 0, 300, 12)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 clip_children = 2
-layout_mode = 0
-offset_left = 471.0
-offset_top = 5.0
-offset_right = 639.0
-offset_bottom = 71.0
+layout_mode = 1
+offset_right = 168.0
+offset_bottom = 66.0
 texture = ExtResource("4_n5ude")
 patch_margin_left = 2
 patch_margin_top = 2
@@ -69,6 +69,7 @@ region_rect = Rect2(0, 0, 300, 12)
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
 clip_children = 2
+layout_mode = 0
 offset_right = 168.0
 offset_bottom = 100.0
 texture = ExtResource("5_y4yjw")
@@ -76,6 +77,72 @@ patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
+
+[node name="Control" type="Control" parent="NinePatchRect"]
+custom_minimum_size = Vector2(157, 5.315)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 163.0
+offset_bottom = 52.0
+
+[node name="Label" type="Label" parent="NinePatchRect/Control"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_y4yjw")
+theme_override_font_sizes/font_size = 16
+text = "LAP 1"
+
+[node name="Label2" type="Label" parent="NinePatchRect/Control"]
+custom_minimum_size = Vector2(55.08, 13.98)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_y4yjw")
+theme_override_font_sizes/font_size = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/Control/Label2"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_y4yjw")
+theme_override_font_sizes/font_size = 16
+text = "00
+"
+
+[node name="Label2" type="Label" parent="NinePatchRect/Control/Label2"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_left = 18.0
+offset_right = 58.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_y4yjw")
+theme_override_font_sizes/font_size = 16
+text = "00"
+
+[node name="Label3" type="Label" parent="NinePatchRect/Control/Label2"]
+custom_minimum_size = Vector2(0, 13.98)
+layout_mode = 0
+offset_left = 39.0
+offset_right = 79.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_y4yjw")
+theme_override_font_sizes/font_size = 16
+text = "00
+"
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
@@ -89,32 +156,6 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
-[node name="Control" type="Control" parent="NinePatchRect/MarginContainer"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 16
-text = "LAP 1 of 3"
-
-[node name="Label2" type="Label" parent="NinePatchRect/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -45.0
-offset_bottom = 23.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 0
-text = "01 08 09"
-
 [node name="Control4" type="Control" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 
@@ -124,93 +165,11 @@ offset_top = 12.0
 offset_right = 158.0
 offset_bottom = 92.0
 
-[node name="Control" type="Control" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer"]
-custom_minimum_size = Vector2(0, 5.315)
-layout_mode = 2
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer/Control"]
-custom_minimum_size = Vector2(0, 13.98)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 16
-text = "LAP 1"
-
-[node name="Label2" type="Label" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer/Control"]
-custom_minimum_size = Vector2(0, 13.98)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -45.0
-offset_bottom = 23.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 0
-text = "01 08 09"
-
-[node name="Control2" type="Control" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer"]
-custom_minimum_size = Vector2(0, 5.315)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer/Control2"]
-custom_minimum_size = Vector2(0, 13.98)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 16
-text = "LAP 1"
-
-[node name="Label2" type="Label" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer/Control2"]
-custom_minimum_size = Vector2(0, 13.98)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -45.0
-offset_bottom = 23.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 0
-text = "01 08 09"
-
-[node name="Control3" type="Control" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer"]
-custom_minimum_size = Vector2(0, 5.315)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer/Control3"]
-custom_minimum_size = Vector2(0, 13.98)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 16
-text = "LAP 1"
-
-[node name="Label2" type="Label" parent="NinePatchRect/MarginContainer/Control4/VBoxContainer/Control3"]
-custom_minimum_size = Vector2(0, 13.98)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -45.0
-offset_bottom = 23.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_y4yjw")
-theme_override_font_sizes/font_size = 0
-text = "01 08 09"
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_m6e0p")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 		#velocity.z = 0
 		if speedfin>0:
 			speedfin-=descspeed*delta
-			print(speedfin)
+			#print(speedfin)
 		else:
 			speedfin=0
 		velocity = speedfin * forward
@@ -79,10 +79,11 @@ func _process(delta: float) -> void:
 		tf2.basis = tf2.basis.orthonormalized()
 		global_transform = tf2
 	else:
-		velocity.y = -50
+		if canjump:
+			velocity.y = -50
 		if speedfin>0:
 			speedfin-=descspeed*delta
-			print(speedfin)
+			#print(speedfin)
 		else:
 			speedfin=0
 		pass

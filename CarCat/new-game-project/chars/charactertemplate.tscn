@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://tqge3tmrqrq2"]
+[gd_scene load_steps=24 format=4 uid="uid://tqge3tmrqrq2"]
 
 [ext_resource type="Script" uid="uid://blrnwbsb0vc3h" path="res://chars/charactertemplate.gd" id="1_lhgf4"]
 [ext_resource type="PackedScene" uid="uid://big7r2kc8a2k8" path="res://chars/car_1.tscn" id="1_oq1pu"]
+[ext_resource type="Material" uid="uid://by2l7jyuv281c" path="res://map1/Material.tres" id="3_j01rm"]
 
 [sub_resource type="Curve" id="Curve_lhgf4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.106928, 0.314855), 0.0, 0.0, 0, 0, Vector2(0.38, 0.629214), 0.827841, 0.827841, 0, 0, Vector2(0.785, 1), 0.0, 0.0, 0, 0]
@@ -22,6 +23,43 @@ point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhgf4"]
 size = Vector3(1.99597, 1.5332, 2.04712)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tssl4"]
+_surfaces = [{
+"aabb": AABB(-3.91238, -0.764421, -3.20919, 7.82476, 1e-05, 9.31626),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("/3+GAQAAAAD/fwAAXbAAAAAAAAD//wAA//8AAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rbbpx"]
+resource_name = "icon_Cube"
+_surfaces = [{
+"aabb": AABB(-3.91238, -0.764421, -3.20919, 7.82476, 1e-05, 9.31626),
+"attribute_data": PackedByteArray("/9//f/+//z//3/8//7//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUA"),
+"material": ExtResource("3_j01rm"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/3+GAQAAye3/fwAAXbDJ7QAAAAD//8nt/38AAF2wye3/f4YBAADJ7f//AAD//8ntIJLutiCS7rYgku62D8kgEg/JIBIPySAS")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tssl4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwwdy"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.9654, 0.183456, 0, 1)
 
 [sub_resource type="Curve" id="Curve_6tuii"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.815385, 0.616694), 0.0, 0.0, 0, 0, Vector2(0.973626, 0.244186), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -86,7 +124,7 @@ height = 2.17809
 [sub_resource type="BoxShape3D" id="BoxShape3D_j01rm"]
 size = Vector3(2.90751, 0.654785, 1)
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("chrbod")]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("chrbod") groups=["player"]]
 physics_interpolation_mode = 1
 script = ExtResource("1_lhgf4")
 speedbasic = 25.0
@@ -111,6 +149,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497986, 0.266602, 0)
 shape = SubResource("BoxShape3D_lhgf4")
 
 [node name="car1" parent="CharacterBody3D" instance=ExtResource("1_oq1pu")]
+
+[node name="Cube2" type="MeshInstance3D" parent="CharacterBody3D/car1"]
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 0, 0, 0)
+layers = 12
+mesh = SubResource("ArrayMesh_rbbpx")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_kwwdy")
+metadata/extras = {
+"poliigon_props": {}
+}
 
 [node name="Node3D" type="Node3D" parent="CharacterBody3D/car1"]
 
@@ -167,3 +215,7 @@ top_level = true
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(-4.37114e-08, 0.149535, -0.988756, 0, 0.988756, 0.149535, 1, 6.53639e-09, -4.32199e-08, -7.285, 4.83, 0)
+cull_mask = 1048563
+
+[node name="icon2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

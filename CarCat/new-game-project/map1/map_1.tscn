@@ -13,8 +13,8 @@ colors = PackedColorArray(0.807843, 0.0705882, 0.862745, 1, 0.94, 0.4982, 0.8148
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r7nca"]
 gradient = SubResource("Gradient_22lvs")
-fill_from = Vector2(0.025641, 0)
-fill_to = Vector2(0, 1)
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.0299145, 0.405983)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7nca"]
 render_priority = 0
@@ -35,6 +35,7 @@ data = PackedVector3Array(0.2556, -0.2004, -0.596, 0.0501, -0.4636, 0.063, -0.16
 [node name="map1" instance=ExtResource("1_uenah")]
 
 [node name="BézierCurve" parent="." index="0"]
+layers = 5
 surface_material_override/0 = SubResource("StandardMaterial3D_uenah")
 surface_material_override/1 = SubResource("ShaderMaterial_r7nca")
 

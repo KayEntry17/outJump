@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy53exmbhkedb"]
+
+[ext_resource type="Script" uid="uid://bykpicl1m8a0x" path="res://lvobj/check.gd" id="1_pqsg2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1iim6"]
+size = Vector3(10, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pqsg2"]
+size = Vector3(10, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqsg2"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.537255)
+
+[node name="Node3D" type="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_pqsg2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1iim6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pqsg2")
+surface_material_override/0 = SubResource("StandardMaterial3D_pqsg2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
