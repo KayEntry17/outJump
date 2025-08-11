@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cvov8f8v2qifo"]
+[gd_scene load_steps=26 format=3 uid="uid://cvov8f8v2qifo"]
 
 [ext_resource type="Script" uid="uid://dppejhwhonvjw" path="res://ui2/MainMenu.gd" id="1_guud0"]
 [ext_resource type="PackedScene" uid="uid://c7do4frwkm1gj" path="res://ui2/button.tscn" id="2_7nmq4"]
 [ext_resource type="Shader" uid="uid://bp7gt0f4kmucf" path="res://map1/lv1bg.gdshader" id="2_kp5ia"]
+[ext_resource type="PackedScene" uid="uid://c60ckmfx61axw" path="res://map1/lv1.tscn" id="2_xjpk4"]
 [ext_resource type="Script" path="res://ui2/button.gd" id="4_tam4n"]
 [ext_resource type="Texture2D" uid="uid://cme67iy62nc8v" path="res://Sprite-0002.png" id="4_tiy2u"]
 [ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="5_3a6vj"]
@@ -34,8 +35,8 @@ gradient = SubResource("Gradient_gbmtc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kp5ia"]
 shader = ExtResource("2_kp5ia")
-shader_parameter/ro = Vector3(0.535, -1.36, 31.24)
-shader_parameter/rotation = Vector3(0, 0, -2.78)
+shader_parameter/ro = Vector3(1.555, -3.44, 31.24)
+shader_parameter/rotation = Vector3(0.94, -0.055, -2.78)
 shader_parameter/grad = SubResource("GradientTexture1D_skkpn")
 shader_parameter/grad2 = SubResource("GradientTexture1D_weawt")
 shader_parameter/stepm = 40
@@ -66,6 +67,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_guud0")
+levels = Array[PackedScene]([ExtResource("2_xjpk4")])
 credits = SubResource("Resource_8jgqg")
 mmtheme = SubResource("Resource_7nmq4")
 
@@ -147,10 +149,10 @@ region_rect = Rect2(0, 103, 387, 70)
 
 [node name="Control2" parent="." instance=ExtResource("10_2wtu0")]
 layout_mode = 1
-offset_left = 456.0
-offset_top = 228.0
-offset_right = 456.0
-offset_bottom = 228.0
+offset_left = 464.0
+offset_top = 240.0
+offset_right = 464.0
+offset_bottom = 240.0
 
 [node name="nosaves" type="Control" parent="."]
 anchors_preset = 0
@@ -166,6 +168,12 @@ offset_left = -113.0
 offset_top = 322.0
 offset_right = -153.0
 offset_bottom = 282.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../exit")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../exit")
+focus_next = NodePath("../exit")
+focus_previous = NodePath("../exit")
 script = ExtResource("4_tam4n")
 destination = Vector2(20, 0)
 
@@ -242,6 +250,12 @@ offset_right = 177.0
 offset_bottom = 339.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../button")
+focus_neighbor_top = NodePath("../button")
+focus_neighbor_right = NodePath("../button")
+focus_neighbor_bottom = NodePath("../button")
+focus_next = NodePath("../button")
+focus_previous = NodePath("../button")
 script = ExtResource("4_tam4n")
 destination = Vector2(20, 0)
 
@@ -297,6 +311,7 @@ offset_bottom = 327.0
 [connection signal="focus_exited" from="nosaves/button" to="nosaves/button" method="_on_focus_exited"]
 [connection signal="mouse_entered" from="nosaves/button" to="nosaves/button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="nosaves/button" to="nosaves/button" method="_on_mouse_exited"]
+[connection signal="pressed" from="nosaves/button" to="nosaves/button/Node2D" method="_on_button_pressed"]
 [connection signal="focus_entered" from="nosaves/exit" to="nosaves/exit" method="_on_focus_entered"]
 [connection signal="focus_exited" from="nosaves/exit" to="nosaves/exit" method="_on_focus_exited"]
 [connection signal="mouse_entered" from="nosaves/exit" to="nosaves/exit" method="_on_mouse_entered"]

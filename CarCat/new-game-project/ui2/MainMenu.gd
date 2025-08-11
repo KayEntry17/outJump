@@ -2,9 +2,10 @@ extends Control
 @export var levels:Array[PackedScene]
 @export var credits:PackedScene
 @export var mmtheme: AudioStream
-#func _ready() -> void:
-	#Saveload.load_game()
-	#$"nosaves/New Game".grab_focus()
+func _ready() -> void:
+	Saveload.load_game()
+	$nosaves/button.grab_focus()
+	Saveload.save_game()
 	#Mus.swaptrack(mmtheme)
 	##$AudioStreamPlayer2D/AnimationPlayer.play("new_animation")
 	#pass

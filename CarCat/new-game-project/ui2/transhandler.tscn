@@ -3,21 +3,6 @@
 [ext_resource type="Script" uid="uid://dh7q5w0wlm7ft" path="res://ui2/transhandler.gd" id="1_3il5u"]
 [ext_resource type="PackedScene" uid="uid://cvov8f8v2qifo" path="res://ui2/mm.tscn" id="2_vs4u8"]
 
-[sub_resource type="Animation" id="Animation_vs4u8"]
-resource_name = "defaul"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D/ColorRect:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -360), Vector2(0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_7r8n5"]
 length = 0.001
 tracks/0/type = "value"
@@ -31,6 +16,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1.1487),
 "update": 0,
 "values": [Vector2(0, -360)]
+}
+
+[sub_resource type="Animation" id="Animation_vs4u8"]
+resource_name = "defaul"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1mrok"]

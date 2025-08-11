@@ -1,0 +1,162 @@
+[gd_scene load_steps=13 format=3 uid="uid://uatnqn5lft8g"]
+
+[ext_resource type="Script" uid="uid://b00urumlvyq8v" path="res://op_1.gd" id="1_u26fq"]
+[ext_resource type="FontFile" uid="uid://ghb8remxneqc" path="res://fonts/8-bit Arcade In.ttf" id="1_vd57c"]
+[ext_resource type="Texture2D" uid="uid://cme67iy62nc8v" path="res://Sprite-0002.png" id="3_l8yd6"]
+[ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="4_s7tlm"]
+[ext_resource type="Shader" uid="uid://ydsify6347cs" path="res://invert.gdshader" id="5_3el4l"]
+
+[sub_resource type="Animation" id="Animation_u26fq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+
+[sub_resource type="Animation" id="Animation_vd57c"]
+resource_name = "op1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 28, 28, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.99),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"truready"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nold5"]
+_data = {
+&"RESET": SubResource("Animation_u26fq"),
+&"op1": SubResource("Animation_vd57c")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n46nw"]
+shader = ExtResource("5_3el4l")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l8yd6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7tlm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3el4l"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u26fq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -11.5
+offset_right = 215.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_vd57c")
+theme_override_font_sizes/font_size = 32
+text = "The last yatagarasu presents"
+horizontal_alignment = 1
+visible_characters = 28
+visible_characters_behavior = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_nold5")
+}
+autoplay = "op1"
+speed_scale = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(156, 177.04)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Sprite2D"]
+clip_children = 2
+offset_top = 185.0
+offset_right = 330.22
+offset_bottom = 210.0
+texture = ExtResource("3_l8yd6")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Sprite2D3" parent="Sprite2D/NinePatchRect" instance=ExtResource("4_s7tlm")]
+position = Vector2(83, 0)
+rotation = 3.14159
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Sprite2D"]
+clip_children = 2
+material = SubResource("ShaderMaterial_n46nw")
+offset_top = 185.0
+offset_right = 330.22
+offset_bottom = 210.0
+texture = ExtResource("3_l8yd6")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = 5.0
+offset_top = 183.0
+offset_right = 176.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_vd57c")
+theme_override_font_sizes/font_size = 16
+text = "Please enter your name:
+"
+
+[node name="LineEdit" type="LineEdit" parent="Sprite2D/Label"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = -3.0
+offset_right = 321.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_vd57c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l8yd6")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_s7tlm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3el4l")
+placeholder_text = "..."
+alignment = 2
+max_length = 11
+
+[connection signal="text_submitted" from="Sprite2D/Label/LineEdit" to="." method="_on_line_edit_text_submitted"]

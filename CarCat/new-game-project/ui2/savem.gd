@@ -5,6 +5,7 @@ var lvunl:int=0
 var volm:=linear_to_db(0.7)
 var volsfx:=linear_to_db(0.7)
 var volmus:=linear_to_db(0.7)
+var names:="placeholdername1723"
 func _ready() -> void:
 	load_game()
 	pass
@@ -18,7 +19,8 @@ func save():
 		"lev_unlock":lvunl,
 		"volmast":volm,
 		"volmus":volmus,
-		"volsfx":volsfx
+		"volsfx":volsfx,
+		"names":names
 		}
 	return save_dict
 func save_game():
@@ -42,6 +44,7 @@ func load_game():
 			level=node_data["level"]
 			checkp=node_data["checkpoint"]
 			lvunl=node_data["lev_unlock"]
+			names=node_data["names"]
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),volm)
 			volmus=node_data["volmus"]
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),volmus)

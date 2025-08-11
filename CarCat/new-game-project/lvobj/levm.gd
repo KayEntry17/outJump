@@ -40,8 +40,8 @@ func goalcheck():
 			#print(curlap)
 		else:
 			#Talo.leaderboards.add_entry()
-			Leaderboard.add(Leaderboard.namepl,str(totaltime),str(mapid))
-			print([Leaderboard.namepl,str(totaltime),str(mapid)])
+			Leaderboard.add(Saveload.names,str(totaltime),str(mapid))
+			print([Saveload.names,str(totaltime),str(mapid)])
 			Leaderboard.refresh()
 			get_tree().reload_current_scene()
 
