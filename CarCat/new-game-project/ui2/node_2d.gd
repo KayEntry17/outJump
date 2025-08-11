@@ -7,7 +7,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_left"):
 			level=max(0,level-1)
 		if Input.is_action_just_pressed("ui_right"):
-			level=min(5,level+1)
+			level=min(2,level+1)
 	if $"../../../Control2".updtime!=str(level):
 		$"../../../Control2".updtime=str(level)
 		$"../../../Control2".rebuildlists()

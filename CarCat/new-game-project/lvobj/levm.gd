@@ -43,6 +43,6 @@ func goalcheck():
 			Leaderboard.add(Saveload.names,str(totaltime),str(mapid))
 			print([Saveload.names,str(totaltime),str(mapid)])
 			Leaderboard.refresh()
-			get_tree().reload_current_scene()
+			TR.reload_scene()
 
 		

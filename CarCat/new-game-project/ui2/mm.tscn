@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://cvov8f8v2qifo"]
+[gd_scene load_steps=24 format=3 uid="uid://cvov8f8v2qifo"]
 
 [ext_resource type="Script" uid="uid://dppejhwhonvjw" path="res://ui2/MainMenu.gd" id="1_guud0"]
+[ext_resource type="Shader" uid="uid://dn807ke2in6ht" path="res://lvobj/lv2bg.gdshader" id="2_2wtu0"]
 [ext_resource type="PackedScene" uid="uid://c7do4frwkm1gj" path="res://ui2/button.tscn" id="2_7nmq4"]
-[ext_resource type="Shader" uid="uid://bp7gt0f4kmucf" path="res://map1/lv1bg.gdshader" id="2_kp5ia"]
-[ext_resource type="PackedScene" uid="uid://c60ckmfx61axw" path="res://map1/lv1.tscn" id="2_xjpk4"]
 [ext_resource type="Script" path="res://ui2/button.gd" id="4_tam4n"]
 [ext_resource type="Texture2D" uid="uid://cme67iy62nc8v" path="res://Sprite-0002.png" id="4_tiy2u"]
 [ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="5_3a6vj"]
@@ -13,9 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://c32ocg4y6jer6" path="res://ui/leadb.tscn" id="10_2wtu0"]
 [ext_resource type="Texture2D" uid="uid://6yetio2caiyd" path="res://ui2/Sprite-00032.png" id="10_afg4e"]
 [ext_resource type="Script" uid="uid://1yi35llockg3" path="res://ui2/node_2d.gd" id="10_xjpk4"]
-
-[sub_resource type="Resource" id="Resource_8jgqg"]
-metadata/__load_path__ = "res:// credits.tscn"
 
 [sub_resource type="Resource" id="Resource_7nmq4"]
 metadata/__load_path__ = "res://Audio/ttost/analgesic/mp3/overworld.mp3"
@@ -34,7 +30,7 @@ offsets = PackedFloat32Array(0, 0.455882)
 gradient = SubResource("Gradient_gbmtc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kp5ia"]
-shader = ExtResource("2_kp5ia")
+shader = ExtResource("2_2wtu0")
 shader_parameter/ro = Vector3(1.555, -3.44, 31.24)
 shader_parameter/rotation = Vector3(0.94, -0.055, -2.78)
 shader_parameter/grad = SubResource("GradientTexture1D_skkpn")
@@ -67,8 +63,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_guud0")
-levels = Array[PackedScene]([ExtResource("2_xjpk4")])
-credits = SubResource("Resource_8jgqg")
 mmtheme = SubResource("Resource_7nmq4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cen6gdn6d572b"]
+
+[ext_resource type="PackedScene" uid="uid://d4atcqxctv0qg" path="res://lvobj/booostz.blend" id="1_i5l6p"]
+
+[node name="booostz" instance=ExtResource("1_i5l6p")]

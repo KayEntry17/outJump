@@ -1,7 +1,7 @@
 extends Control
 var paused
 var basepos: Vector2
-@export var mainm:PackedScene
+#@export var mainm:PackedScene
 
 func ready():
 	paused=false

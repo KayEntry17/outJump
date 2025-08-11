@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c60ckmfx61axw"]
+[gd_scene load_steps=25 format=3 uid="uid://c60ckmfx61axw"]
 
 [ext_resource type="PackedScene" uid="uid://u2ikc3qh3svs" path="res://map1/map_1.tscn" id="1_7vjxm"]
 [ext_resource type="PackedScene" uid="uid://tqge3tmrqrq2" path="res://chars/charactertemplate.tscn" id="2_c42dk"]
@@ -22,8 +22,8 @@ adjustment_enabled = true
 adjustment_saturation = 1.95
 
 [sub_resource type="Gradient" id="Gradient_rslpf"]
-offsets = PackedFloat32Array(0, 0.564394, 0.886364)
-colors = PackedColorArray(0, 0.890196, 1, 1, 0.87451, 0.388235, 0.94902, 1, 0.176427, 0.00442462, 0.202218, 1)
+offsets = PackedFloat32Array(0, 0.564394, 0.7325, 0.9875)
+colors = PackedColorArray(0.6794, 0.79, 0.714423, 1, 0.57167, 0.659195, 0.533128, 1, 0.176427, 0.00442462, 0.202218, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_36n25"]
 gradient = SubResource("Gradient_rslpf")
@@ -64,6 +64,9 @@ shader_parameter/noisetex = SubResource("ViewportTexture_jtydb")
 [sub_resource type="ViewportTexture" id="ViewportTexture_36n25"]
 viewport_path = NodePath("SubViewport2")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vqnc"]
+size = Vector3(500, 1, 500)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -79,7 +82,7 @@ use_collision = true
 size = Vector3(100, 1, 100)
 
 [node name="CharacterBody3D" parent="." node_paths=PackedStringArray("tdbg") instance=ExtResource("2_c42dk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8744, 49.428, -21.6373)
+transform = Transform3D(0.224951, 0, -0.97437, 0, 1, 0, 0.97437, 0, 0.224951, 50.8744, 1.60164, -30.8653)
 tdbg = NodePath("../SubViewport/Sprite2D2")
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -129,7 +132,7 @@ expand_mode = 1
 script = ExtResource("7_36n25")
 chekcp = [NodePath("../Node3D3"), NodePath("../Node3D4"), NodePath("../Node3D5"), NodePath("../Node3D6")]
 goal = NodePath("../Goal")
-lapam = 2
+lapam = 3
 
 [node name="Node3D3" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_bjo4t")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 77.3566, 0.36678, 46.3506)
@@ -147,7 +150,7 @@ manager = NodePath("../levm")
 id = 3
 
 [node name="Node3D6" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_bjo4t")]
-transform = Transform3D(7.2323, 0, 3.41962, 0, 8, 0, -3.41962, 0, 7.2323, 17.2773, 23.7529, -113.603)
+transform = Transform3D(7.94655, 0, 0.923243, 0, 8, 0, -0.923243, 0, 7.94655, 48.9394, 24.2464, -20.7104)
 manager = NodePath("../levm")
 id = 4
 
@@ -161,5 +164,12 @@ transparent_bg = true
 [node name="Camera3D" type="Camera3D" parent="SubViewport2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -16.125, 245.417, -43.44)
 cull_mask = 1048572
+current = true
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("10_nqw60")]
+
+[node name="Area3D2" type="Area3D" parent="." groups=["restart"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -118.563, 0)
+shape = SubResource("BoxShape3D_5vqnc")

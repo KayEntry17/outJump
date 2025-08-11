@@ -1,0 +1,225 @@
+[gd_scene load_steps=27 format=3 uid="uid://u106cexppuce"]
+
+[ext_resource type="PackedScene" uid="uid://tqge3tmrqrq2" path="res://chars/charactertemplate.tscn" id="1_nmb06"]
+[ext_resource type="Shader" uid="uid://dn807ke2in6ht" path="res://lvobj/lv2bg.gdshader" id="2_kp0v1"]
+[ext_resource type="Shader" uid="uid://bkrj1080b366h" path="res://map1/3DREND.gdshader" id="3_jtt1x"]
+[ext_resource type="PackedScene" uid="uid://dcpbiilpmsmec" path="res://hgh/Goalgameplay.tscn" id="4_vtyna"]
+[ext_resource type="PackedScene" uid="uid://c5t0s07cgm1bd" path="res://ui.tscn" id="5_rkrtw"]
+[ext_resource type="Script" uid="uid://wvb2efnuhh73" path="res://lvobj/levm.gd" id="6_yjcna"]
+[ext_resource type="PackedScene" uid="uid://cy53exmbhkedb" path="res://lvobj/check.tscn" id="7_6y56i"]
+[ext_resource type="PackedScene" uid="uid://bhbbbfbff60s7" path="res://ui2/puasemenu.tscn" id="8_winko"]
+[ext_resource type="PackedScene" uid="uid://fdlk373aujb2" path="res://ui2/transhandler.tscn" id="9_p5cq0"]
+[ext_resource type="PackedScene" uid="uid://c7pxvwf5dx5ns" path="res://lvobj/obst.tscn" id="10_aaj8t"]
+[ext_resource type="PackedScene" uid="uid://dsf8lwdam7376" path="res://lvobj/boosrz.tscn" id="11_dirsg"]
+[ext_resource type="PackedScene" uid="uid://cl5kpu68eguhb" path="res://lvobj/lvl333.tscn" id="12_nmb06"]
+
+[sub_resource type="Sky" id="Sky_7vjxm"]
+
+[sub_resource type="Environment" id="Environment_c42dk"]
+sky = SubResource("Sky_7vjxm")
+glow_enabled = true
+glow_bloom = 0.59
+glow_hdr_threshold = 0.97
+adjustment_enabled = true
+adjustment_saturation = 1.95
+
+[sub_resource type="Gradient" id="Gradient_rslpf"]
+offsets = PackedFloat32Array(0, 0.564394, 0.8475)
+colors = PackedColorArray(0.3762, 0.99, 0.51942, 1, 0.406717, 0.687673, 0.655951, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_36n25"]
+gradient = SubResource("Gradient_rslpf")
+
+[sub_resource type="Gradient" id="Gradient_bjo4t"]
+offsets = PackedFloat32Array(0, 0.637188)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_br423"]
+gradient = SubResource("Gradient_bjo4t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmb06"]
+shader = ExtResource("2_kp0v1")
+shader_parameter/ro = Vector3(0, 0, -3)
+shader_parameter/rotation = Vector3(0, 0, -2.78)
+shader_parameter/grad = SubResource("GradientTexture1D_36n25")
+shader_parameter/grad2 = SubResource("GradientTexture1D_br423")
+shader_parameter/stepm = 40
+
+[sub_resource type="Gradient" id="Gradient_nqw60"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_br423"]
+gradient = SubResource("Gradient_nqw60")
+width = 360
+height = 360
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqw60"]
+size = Vector3(1000, 1000, 1000)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jtydb"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vqnc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_jtt1x")
+shader_parameter/noisetex = SubResource("ViewportTexture_jtydb")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_36n25"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vqnc"]
+size = Vector3(500, 1, 500)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c42dk")
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("tdbg") instance=ExtResource("1_nmb06")]
+transform = Transform3D(0.224951, 0, -0.97437, 0, 1, 0, 0.97437, 0, 0.224951, 265.994, -8.43742, -60.5702)
+floor_max_angle = 3.14159
+tdbg = NodePath("../SubViewport/Sprite2D2")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(640, 360)
+size_2d_override_stretch = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewport"]
+material = SubResource("ShaderMaterial_nmb06")
+position = Vector2(320, 180)
+texture = SubResource("GradientTexture2D_br423")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+position = Vector2(320, 180)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nqw60")
+surface_material_override/0 = SubResource("ShaderMaterial_5vqnc")
+
+[node name="Node3D" parent="." instance=ExtResource("4_vtyna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2238.51, 5799.02, 1578.25)
+
+[node name="Goal" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("4_vtyna")]
+transform = Transform3D(0.849626, -0.527386, 0, 0.527386, 0.849626, 0, 0, 0, 1, 266.881, -26.3488, -3.1285)
+manager = NodePath("../levm")
+
+[node name="Control" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("5_rkrtw")]
+manager = NodePath("../levm")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+texture_filter = 2
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = SubResource("ViewportTexture_36n25")
+expand_mode = 1
+
+[node name="levm" type="Node" parent="." node_paths=PackedStringArray("chekcp", "goal")]
+script = ExtResource("6_yjcna")
+chekcp = [NodePath("../Node3D3"), NodePath("../Node3D4"), NodePath("../Node3D5"), NodePath("../Node3D6")]
+goal = NodePath("../Goal")
+lapam = 2
+mapid = 2
+
+[node name="Node3D3" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_6y56i")]
+transform = Transform3D(2.75531, 0, 7.51054, 0, 8, 0, -7.51054, 0, 2.75531, 185.71, -87.732, -71.4673)
+manager = NodePath("../levm")
+id = 1
+
+[node name="Node3D4" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_6y56i")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 266.176, -46.0118, -4.94587)
+manager = NodePath("../levm")
+id = 4
+
+[node name="Node3D5" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_6y56i")]
+transform = Transform3D(-6.56417, 0, 4.57293, 0, 8, 0, -4.57293, 0, -6.56417, 347.71, 3.89235, -175.893)
+manager = NodePath("../levm")
+id = 3
+
+[node name="Node3D6" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("7_6y56i")]
+transform = Transform3D(6.74332, -1.54732, 4.01664, 0.205767, -7.34082, -3.17334, 4.29945, 2.77817, -6.14788, 211.773, -8.32103, -261.225)
+manager = NodePath("../levm")
+id = 2
+
+[node name="Puasemenu" parent="." instance=ExtResource("8_winko")]
+offset_left = -1002.0
+offset_right = -1002.0
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport2"]
+transform = Transform3D(1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 250.395, 206.802, 13.38)
+cull_mask = 1048572
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("9_p5cq0")]
+
+[node name="Area3D2" type="Area3D" parent="." groups=["restart"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 222.392, 21.4919, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -118.563, 0)
+shape = SubResource("BoxShape3D_5vqnc")
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(0.998215, -0.0576553, 0.0156097, 0.0581569, 0.997733, -0.0338523, -0.0136225, 0.0346996, 0.999305, 211.164, 0.817378, -165.151)
+
+[node name="Area3D" parent="Node3D2" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2421, 1.26875, 19.8199)
+
+[node name="Area3D8" parent="Node3D2" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7416, 1.26875, 19.8199)
+
+[node name="Area3D3" parent="Node3D2" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.7528, 1.26875, 19.8199)
+
+[node name="Area3D4" parent="Node3D2" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.6368, 1.26875, 19.8199)
+
+[node name="Area3D5" parent="Node3D2" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4511, 1.26875, 19.8199)
+
+[node name="Area3D6" parent="Node3D2" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.3987, 1.26875, 19.8199)
+
+[node name="Area3D7" parent="Node3D2" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.9218, 1.26875, 19.8199)
+
+[node name="Node3D8" type="Node3D" parent="."]
+transform = Transform3D(0.693638, -0.334404, -0.637996, 0.337842, 0.933279, -0.121869, 0.636182, -0.131009, 0.760334, 147.402, -56.0661, -290.718)
+
+[node name="Area3D" parent="Node3D8" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2421, 1.26875, 19.8199)
+
+[node name="Area3D8" parent="Node3D8" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7416, 1.26875, 19.8199)
+
+[node name="Area3D3" parent="Node3D8" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.7528, 1.26875, 19.8199)
+
+[node name="Area3D4" parent="Node3D8" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.6368, 1.26875, 19.8199)
+
+[node name="Area3D5" parent="Node3D8" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4511, 1.26875, 19.8199)
+
+[node name="Area3D6" parent="Node3D8" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.3987, 1.26875, 19.8199)
+
+[node name="Area3D7" parent="Node3D8" instance=ExtResource("10_aaj8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.9218, 1.26875, 19.8199)
+
+[node name="Area3D" parent="." instance=ExtResource("11_dirsg")]
+transform = Transform3D(-1.47308, -1.21427, 0.596304, -0.833126, 1.50889, 1.01447, -1.0658, 0.498802, -1.61718, 263.375, -28.0088, 33.5365)
+boostsped = 50.0
+
+[node name="Node3D9" parent="." instance=ExtResource("12_nmb06")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 216.801, -10.3609, 165.834)

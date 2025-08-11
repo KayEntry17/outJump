@@ -1,8 +1,9 @@
 extends Control
-@export var levels:Array[PackedScene]
-@export var credits:PackedScene
+var levels
+#@export var credits:PackedScene
 @export var mmtheme: AudioStream
 func _ready() -> void:
+	levels=Sceneref.levels
 	Saveload.load_game()
 	$nosaves/button.grab_focus()
 	Saveload.save_game()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://fdlk373aujb2"]
+[gd_scene load_steps=5 format=3 uid="uid://fdlk373aujb2"]
 
 [ext_resource type="Script" uid="uid://dh7q5w0wlm7ft" path="res://ui2/transhandler.gd" id="1_3il5u"]
-[ext_resource type="PackedScene" uid="uid://cvov8f8v2qifo" path="res://ui2/mm.tscn" id="2_vs4u8"]
 
 [sub_resource type="Animation" id="Animation_7r8n5"]
 length = 0.001
@@ -43,7 +42,6 @@ _data = {
 process_mode = 3
 layer = 125
 script = ExtResource("1_3il5u")
-mainm = ExtResource("2_vs4u8")
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 3

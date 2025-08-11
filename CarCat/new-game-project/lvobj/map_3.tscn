@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bargqewjfcpei"]
+
+[ext_resource type="PackedScene" uid="uid://bbhtn5faq4gwe" path="res://map1/map3.blend" id="1_r5053"]
+
+[node name="map3" instance=ExtResource("1_r5053")]
+
+[node name="BézierCurve" parent="." index="0"]
+visible = false
+
+[node name="BézierCurve_001" parent="." index="1"]
+visible = false
+
+[node name="BézierCurve_002" parent="." index="2"]
+visible = false
+
+[node name="BézierCurve_003" parent="." index="3"]
+visible = false
+
+[node name="BézierCurve_004" parent="." index="4"]
+visible = false
+
+[node name="BézierCurve_005" parent="." index="5"]
+visible = false
+
+[node name="BézierCurve_006" parent="." index="6"]
+visible = false
+
+[node name="BézierCircle" parent="." index="7"]
+visible = false

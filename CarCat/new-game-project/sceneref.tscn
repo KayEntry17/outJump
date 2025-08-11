@@ -1,0 +1,12 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0a65406tvdng"]
+
+[ext_resource type="Script" uid="uid://c861kt7sf4n6r" path="res://node.gd" id="1_4pcsv"]
+[ext_resource type="PackedScene" uid="uid://c60ckmfx61axw" path="res://map1/lv1.tscn" id="2_gxurt"]
+[ext_resource type="PackedScene" uid="uid://cvov8f8v2qifo" path="res://ui2/mm.tscn" id="3_nqgal"]
+[ext_resource type="PackedScene" uid="uid://dhjpv2ypq3v2x" path="res://lv2.tscn" id="3_ypd5x"]
+[ext_resource type="PackedScene" uid="uid://u106cexppuce" path="res://lvobj/lv3.tscn" id="4_ypd5x"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_4pcsv")
+levels = Array[PackedScene]([ExtResource("2_gxurt"), ExtResource("3_ypd5x"), ExtResource("4_ypd5x")])
+mainm = ExtResource("3_nqgal")

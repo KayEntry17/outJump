@@ -168,17 +168,17 @@ float smin( float a, float b, float k )
 }
 float map(vec3 p){
 	vec3 q=p;
-	q=mod(p,4.)-2.;
+	q=mod(p,2.)-1.;
 	vec4 rot=rot2D(sin(TIME));
 
 	q.xy=vec2(dot(q.xy,rot.xy),dot(q.xy,rot.ba));
 	vec3 spherePos=vec3(0.,0.,0.)-vec3(0,sin(TIME)*0.3,0);
 
-	float sphere1=sdSphere(q-spherePos,1);
-	float sphere2=sdBox(p-vec3(0.,0.,0.),vec3(32));
+	float sphere1=sdSphere(q-spherePos,0.1);
+	float sphere2=sdSphere(p-vec3(0.,0.,0.),35);
 	//float ground=-p.y+6.;
 
-	float box1=sdBox(q,vec3(1));
+	float box1=sdBox(q,vec3(0.1));
 	//return min(ground,smin(sphere1,box1,.1));
 	float recgroup=smin(sphere1,box1,0.05);
 

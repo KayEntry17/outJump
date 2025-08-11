@@ -21,7 +21,7 @@ const DECOMPERSSOR_URL_FMT: String = \
 	"https://github.com/ouch-org/ouch/releases/download/0.3.1/{ouch_build}"
 
 # Names for menu
-const API_MENU_ITEM: String = "Wakatime API key"
+const API_MENU_ITEM: String = "dd891d46-d2cc-42ce-b8b9-b916e5cf8f0d"
 const CONFIG_MENU_ITEM: String = "Wakatime Config File"
 
 # Directories to grab wakatime from

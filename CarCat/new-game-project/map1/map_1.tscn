@@ -47,3 +47,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_22lvs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_uenah")
+
+[node name="BézierCurve_002" parent="." index="3"]
+visible = false
+
+[node name="BézierCurve_003" parent="." index="4"]
+visible = false

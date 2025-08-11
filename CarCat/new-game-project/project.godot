@@ -21,6 +21,7 @@ Leaderboard="*res://leaderboard.gd"
 Saveload="*res://ui2/savem.tscn"
 Pausem="*res://ui2/pausem.tscn"
 TR="*res://ui2/transhandler.tscn"
+Sceneref="*res://sceneref.tscn"
 
 [display]
 
@@ -37,6 +38,9 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 ground=""
 player=""
+spinout=""
+restart=""
+boost=""
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhbbbfbff60s7"]
+[gd_scene load_steps=9 format=3 uid="uid://bhbbbfbff60s7"]
 
 [ext_resource type="Script" uid="uid://b6pevugyupr2x" path="res://ui2/puasemenu.gd" id="1_e8vhr"]
 [ext_resource type="Script" path="res://ui2/button.gd" id="2_u5l60"]
@@ -6,10 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="4_7tiei"]
 [ext_resource type="Shader" uid="uid://ydsify6347cs" path="res://invert.gdshader" id="5_usqpr"]
 [ext_resource type="FontFile" uid="uid://ghb8remxneqc" path="res://fonts/8-bit Arcade In.ttf" id="6_ubqgn"]
-[ext_resource type="PackedScene" uid="uid://fdlk373aujb2" path="res://ui2/transhandler.tscn" id="7_muih3"]
-
-[sub_resource type="Resource" id="Resource_wal0e"]
-metadata/__load_path__ = "res://ui/heart.tscn"
+[ext_resource type="PackedScene" uid="uid://c7do4frwkm1gj" path="res://ui2/button.tscn" id="7_muih3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ibog1"]
 shader = ExtResource("5_usqpr")
@@ -25,7 +22,6 @@ offset_right = -688.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e8vhr")
-mainm = SubResource("Resource_wal0e")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 process_mode = 3
@@ -152,6 +148,7 @@ text = "Exit
 "
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("7_muih3")]
+layout_mode = 0
 
 [connection signal="focus_entered" from="resume" to="resume" method="_on_focus_entered"]
 [connection signal="focus_exited" from="resume" to="resume" method="_on_focus_exited"]

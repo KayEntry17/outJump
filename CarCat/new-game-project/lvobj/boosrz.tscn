@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=4 uid="uid://dsf8lwdam7376"]
+
+[ext_resource type="Shader" uid="uid://l2lh6ty1ibed" path="res://map1/map_1.gdshader" id="1_v3bvu"]
+[ext_resource type="Script" uid="uid://i18qgpr1v5ih" path="res://lvobj/boosrz.gd" id="1_xtkfs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8be1"]
+resource_name = "Material"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+metadata/extras = {
+"poliigon_props": {}
+}
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tl4q4"]
+_surfaces = [{
+"aabb": AABB(-1.53256, -0.618906, -1, 3.06512, 1e-05, 3.02715),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAHAAgABgAJAAcACgAJAAYACgALAAkA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAAAAAAA8pQAAK20AAP//AAAiqQAA/38AAHBJAAAAAAAAIqkAAMJaAAArbQAA/38AANxWAAA8pQAACMQAAP//AAD//wAA/38AAE2gAAAAAAAA//8AAMJaAAAIxAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3tcm8"]
+resource_name = "booostz_Cube"
+_surfaces = [{
+"aabb": AABB(-1.53256, -0.618906, -1, 3.06512, 1e-05, 3.02715),
+"attribute_data": PackedByteArray("AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAHAAgABgAJAAcACgAJAAYACgALAAkA"),
+"material": SubResource("StandardMaterial3D_d8be1"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAAAA/z88pQAAK23/P///AAAiqf8//38AAHBJ/z8AAAAAIqn/P8JaAAArbf8//38AANxW/z88pQAACMT/P///AAD///8//38AAE2g/z8AAAAA////P8JaAAAIxP8/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tl4q4")
+
+[sub_resource type="Gradient" id="Gradient_v3bvu"]
+offsets = PackedFloat32Array(0, 0.4975, 0.9025)
+colors = PackedColorArray(1, 0.964706, 0.00392157, 1, 1, 0.635294, 0.027451, 1, 1, 0.160784, 0.0156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xtkfs"]
+gradient = SubResource("Gradient_v3bvu")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtkfs"]
+render_priority = 0
+shader = ExtResource("1_v3bvu")
+shader_parameter/noisetex = SubResource("GradientTexture2D_xtkfs")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3bvu"]
+size = Vector3(3.405, 1.335, 3.04152)
+
+[node name="Area3D" type="Area3D" groups=["boost"]]
+script = ExtResource("1_xtkfs")
+boostval = 1.0
+boostsped = 30.0
+
+[node name="booostz" type="Node3D" parent="."]
+
+[node name="Cube" type="MeshInstance3D" parent="booostz"]
+mesh = SubResource("ArrayMesh_3tcm8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_xtkfs")
+metadata/extras = {
+"poliigon_props": {}
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.571287)
+shape = SubResource("BoxShape3D_v3bvu")

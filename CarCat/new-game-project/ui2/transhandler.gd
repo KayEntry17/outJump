@@ -1,8 +1,9 @@
 extends CanvasLayer
 var i
-@export var mainm:PackedScene
+var mainm
 
-#func _ready() -> void:
+func _ready() -> void:
+	mainm=Sceneref.mainm
 	#call_deferred("_fix_alignment")
 	#$AnimatedSprite2D.frame=0
 func change_scene(scene):
