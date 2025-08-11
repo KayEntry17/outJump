@@ -1,0 +1,304 @@
+[gd_scene load_steps=25 format=3 uid="uid://cvov8f8v2qifo"]
+
+[ext_resource type="Script" uid="uid://dppejhwhonvjw" path="res://ui2/MainMenu.gd" id="1_guud0"]
+[ext_resource type="PackedScene" uid="uid://c7do4frwkm1gj" path="res://ui2/button.tscn" id="2_7nmq4"]
+[ext_resource type="Shader" uid="uid://bp7gt0f4kmucf" path="res://map1/lv1bg.gdshader" id="2_kp5ia"]
+[ext_resource type="Script" path="res://ui2/button.gd" id="4_tam4n"]
+[ext_resource type="Texture2D" uid="uid://cme67iy62nc8v" path="res://Sprite-0002.png" id="4_tiy2u"]
+[ext_resource type="PackedScene" uid="uid://cagrbpd4chouv" path="res://stripeelproper.tscn" id="5_3a6vj"]
+[ext_resource type="Texture2D" uid="uid://d2ufjg1ikr4oi" path="res://logo1d.png" id="6_huk06"]
+[ext_resource type="Shader" uid="uid://ydsify6347cs" path="res://invert.gdshader" id="7_tam4n"]
+[ext_resource type="FontFile" uid="uid://ghb8remxneqc" path="res://fonts/8-bit Arcade In.ttf" id="8_afg4e"]
+[ext_resource type="PackedScene" uid="uid://c32ocg4y6jer6" path="res://ui/leadb.tscn" id="10_2wtu0"]
+[ext_resource type="Texture2D" uid="uid://6yetio2caiyd" path="res://ui2/Sprite-00032.png" id="10_afg4e"]
+[ext_resource type="Script" uid="uid://1yi35llockg3" path="res://ui2/node_2d.gd" id="10_xjpk4"]
+
+[sub_resource type="Resource" id="Resource_8jgqg"]
+metadata/__load_path__ = "res:// credits.tscn"
+
+[sub_resource type="Resource" id="Resource_7nmq4"]
+metadata/__load_path__ = "res://Audio/ttost/analgesic/mp3/overworld.mp3"
+
+[sub_resource type="Gradient" id="Gradient_vhia7"]
+offsets = PackedFloat32Array(0, 0.43424, 0.806122)
+colors = PackedColorArray(0, 0.890196, 1, 1, 0.87451, 0.388235, 0.94902, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_skkpn"]
+gradient = SubResource("Gradient_vhia7")
+
+[sub_resource type="Gradient" id="Gradient_gbmtc"]
+offsets = PackedFloat32Array(0, 0.455882)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_weawt"]
+gradient = SubResource("Gradient_gbmtc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kp5ia"]
+shader = ExtResource("2_kp5ia")
+shader_parameter/ro = Vector3(0.535, -1.36, 31.24)
+shader_parameter/rotation = Vector3(0, 0, -2.78)
+shader_parameter/grad = SubResource("GradientTexture1D_skkpn")
+shader_parameter/grad2 = SubResource("GradientTexture1D_weawt")
+shader_parameter/stepm = 40
+
+[sub_resource type="Gradient" id="Gradient_0pmb7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tiy2u"]
+gradient = SubResource("Gradient_0pmb7")
+width = 360
+height = 360
+
+[sub_resource type="Environment" id="Environment_kp5ia"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_saturation = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afg4e"]
+shader = ExtResource("7_tam4n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibog1"]
+shader = ExtResource("7_tam4n")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_guud0")
+credits = SubResource("Resource_8jgqg")
+mmtheme = SubResource("Resource_7nmq4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kp5ia")
+position = Vector2(320, 180)
+texture = SubResource("GradientTexture2D_tiy2u")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
+
+[node name="audio" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 688.0
+offset_right = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kp5ia")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -9.0
+offset_top = -28.0
+offset_right = 31.0
+offset_bottom = 12.0
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+clip_children = 2
+layout_mode = 0
+offset_left = 11.0
+offset_top = 31.0
+offset_right = 414.055
+offset_bottom = 187.74
+texture = ExtResource("4_tiy2u")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Sprite2D3" parent="Control/NinePatchRect" instance=ExtResource("5_3a6vj")]
+position = Vector2(83, 0)
+rotation = 3.14159
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="Sprite2D4" parent="Control/NinePatchRect" instance=ExtResource("5_3a6vj")]
+position = Vector2(83, 153)
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="Logo1d" type="Sprite2D" parent="Control/NinePatchRect"]
+position = Vector2(201, 69)
+texture = ExtResource("6_huk06")
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Control"]
+clip_children = 2
+material = SubResource("ShaderMaterial_afg4e")
+layout_mode = 0
+offset_left = 11.0
+offset_top = 31.0
+offset_right = 414.055
+offset_bottom = 187.74
+texture = ExtResource("4_tiy2u")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Logo1d2" type="Sprite2D" parent="Control"]
+position = Vector2(200, 145)
+texture = ExtResource("6_huk06")
+region_enabled = true
+region_rect = Rect2(0, 103, 387, 70)
+
+[node name="Control2" parent="." instance=ExtResource("10_2wtu0")]
+layout_mode = 1
+offset_left = 456.0
+offset_top = 228.0
+offset_right = 456.0
+offset_bottom = 228.0
+
+[node name="nosaves" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = -42.0
+offset_right = 48.0
+offset_bottom = -2.0
+
+[node name="button" type="TextureButton" parent="nosaves"]
+custom_minimum_size = Vector2(330, 25)
+layout_mode = 1
+offset_left = -113.0
+offset_top = 322.0
+offset_right = -153.0
+offset_bottom = 282.0
+script = ExtResource("4_tam4n")
+destination = Vector2(20, 0)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="nosaves/button"]
+clip_children = 2
+layout_mode = 0
+offset_right = 330.22
+offset_bottom = 25.0
+texture = ExtResource("4_tiy2u")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Sprite2D3" parent="nosaves/button/NinePatchRect" instance=ExtResource("5_3a6vj")]
+position = Vector2(83, 0)
+rotation = 3.14159
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="nosaves/button"]
+clip_children = 2
+material = SubResource("ShaderMaterial_ibog1")
+layout_mode = 0
+offset_right = 330.22
+offset_bottom = 25.0
+texture = ExtResource("4_tiy2u")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="nosaves/button"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 4.0
+offset_right = 176.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_afg4e")
+theme_override_font_sizes/font_size = 16
+text = "Level "
+
+[node name="Node2D" type="Node2D" parent="nosaves/button"]
+position = Vector2(232, 4)
+script = ExtResource("10_xjpk4")
+
+[node name="Label2" type="Label" parent="nosaves/button/Node2D"]
+offset_left = -43.0
+offset_right = 9.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_afg4e")
+theme_override_font_sizes/font_size = 16
+text = "2"
+
+[node name="Sprite-00032" type="Sprite2D" parent="nosaves/button/Node2D"]
+position = Vector2(-31, 8)
+texture = ExtResource("10_afg4e")
+
+[node name="Sprite-00033" type="Sprite2D" parent="nosaves/button/Node2D"]
+position = Vector2(-48, 8)
+scale = Vector2(-1, -1)
+texture = ExtResource("10_afg4e")
+
+[node name="exit" type="TextureButton" parent="nosaves"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = 354.0
+offset_right = 177.0
+offset_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_tam4n")
+destination = Vector2(20, 0)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="nosaves/exit"]
+clip_children = 2
+layout_mode = 0
+offset_right = 330.22
+offset_bottom = 25.0
+texture = ExtResource("4_tiy2u")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Sprite2D3" parent="nosaves/exit/NinePatchRect" instance=ExtResource("5_3a6vj")]
+position = Vector2(83, 0)
+rotation = 3.14159
+scale = Vector2(3, 3)
+region_rect = Rect2(0, 0, 300, 12)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="nosaves/exit"]
+clip_children = 2
+material = SubResource("ShaderMaterial_ibog1")
+layout_mode = 0
+offset_right = 330.22
+offset_bottom = 25.0
+texture = ExtResource("4_tiy2u")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="nosaves/exit"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 4.0
+offset_right = 176.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_afg4e")
+theme_override_font_sizes/font_size = 16
+text = "EXIT"
+
+[node name="button3" parent="nosaves" instance=ExtResource("2_7nmq4")]
+visible = false
+layout_mode = 1
+offset_left = -113.0
+offset_top = 367.0
+offset_right = -153.0
+offset_bottom = 327.0
+
+[connection signal="focus_entered" from="nosaves/button" to="nosaves/button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="nosaves/button" to="nosaves/button" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="nosaves/button" to="nosaves/button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="nosaves/button" to="nosaves/button" method="_on_mouse_exited"]
+[connection signal="focus_entered" from="nosaves/exit" to="nosaves/exit" method="_on_focus_entered"]
+[connection signal="focus_exited" from="nosaves/exit" to="nosaves/exit" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="nosaves/exit" to="nosaves/exit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="nosaves/exit" to="nosaves/exit" method="_on_mouse_exited"]
+[connection signal="pressed" from="nosaves/exit" to="." method="_on_exit_pressed"]

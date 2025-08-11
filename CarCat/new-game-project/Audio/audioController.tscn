@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2bou3sc8bbky"]
+
+[ext_resource type="Script" uid="uid://ck6gd5g02pa87" path="res://Audio/AudioMangerUlti.gd" id="1_7mvpa"]
+[ext_resource type="PackedScene" uid="uid://cfhptgd7ahy5" path="res://Audio/AudioManager.tscn" id="2_8uja1"]
+
+[node name="mainc" type="Node" node_paths=PackedStringArray("channels")]
+process_mode = 3
+script = ExtResource("1_7mvpa")
+channels = [NodePath("main"), NodePath("extra1"), NodePath("extra2")]
+
+[node name="main" parent="." instance=ExtResource("2_8uja1")]
+process_mode = 3
+
+[node name="extra1" parent="." instance=ExtResource("2_8uja1")]
+process_mode = 3
+
+[node name="extra2" parent="." instance=ExtResource("2_8uja1")]
+process_mode = 3

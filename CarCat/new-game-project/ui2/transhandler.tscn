@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://fdlk373aujb2"]
+
+[ext_resource type="Script" uid="uid://dh7q5w0wlm7ft" path="res://ui2/transhandler.gd" id="1_3il5u"]
+[ext_resource type="PackedScene" uid="uid://cvov8f8v2qifo" path="res://ui2/mm.tscn" id="2_vs4u8"]
+
+[sub_resource type="Animation" id="Animation_vs4u8"]
+resource_name = "defaul"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7r8n5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1.1487),
+"update": 0,
+"values": [Vector2(0, -360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1mrok"]
+_data = {
+&"RESET": SubResource("Animation_7r8n5"),
+&"defaul": SubResource("Animation_vs4u8")
+}
+
+[node name="AnimatedSprite2D" type="CanvasLayer"]
+process_mode = 3
+layer = 125
+script = ExtResource("1_3il5u")
+mainm = ExtResource("2_vs4u8")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 1.1
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+process_mode = 3
+wait_time = 1.1
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1mrok")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+offset_top = -360.0
+offset_right = 640.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

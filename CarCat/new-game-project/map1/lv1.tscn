@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c60ckmfx61axw"]
+[gd_scene load_steps=24 format=3 uid="uid://c60ckmfx61axw"]
 
 [ext_resource type="PackedScene" uid="uid://u2ikc3qh3svs" path="res://map1/map_1.tscn" id="1_7vjxm"]
 [ext_resource type="PackedScene" uid="uid://tqge3tmrqrq2" path="res://chars/charactertemplate.tscn" id="2_c42dk"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c5t0s07cgm1bd" path="res://ui.tscn" id="6_rslpf"]
 [ext_resource type="Script" uid="uid://wvb2efnuhh73" path="res://lvobj/levm.gd" id="7_36n25"]
 [ext_resource type="PackedScene" uid="uid://cy53exmbhkedb" path="res://lvobj/check.tscn" id="7_bjo4t"]
+[ext_resource type="PackedScene" uid="uid://bhbbbfbff60s7" path="res://ui2/puasemenu.tscn" id="9_br423"]
+[ext_resource type="PackedScene" uid="uid://fdlk373aujb2" path="res://ui2/transhandler.tscn" id="10_nqw60"]
 
 [sub_resource type="Sky" id="Sky_7vjxm"]
 
@@ -23,27 +25,27 @@ adjustment_saturation = 1.95
 offsets = PackedFloat32Array(0, 0.564394, 0.886364)
 colors = PackedColorArray(0, 0.890196, 1, 1, 0.87451, 0.388235, 0.94902, 1, 0.176427, 0.00442462, 0.202218, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_skkpn"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_36n25"]
 gradient = SubResource("Gradient_rslpf")
 
 [sub_resource type="Gradient" id="Gradient_bjo4t"]
 offsets = PackedFloat32Array(0, 0.637188)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_weawt"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_br423"]
 gradient = SubResource("Gradient_bjo4t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_36n25"]
 shader = ExtResource("3_jtydb")
 shader_parameter/ro = Vector3(0, 0, -3)
 shader_parameter/rotation = Vector3(0, 0, -2.78)
-shader_parameter/grad = SubResource("GradientTexture1D_skkpn")
-shader_parameter/grad2 = SubResource("GradientTexture1D_weawt")
+shader_parameter/grad = SubResource("GradientTexture1D_36n25")
+shader_parameter/grad2 = SubResource("GradientTexture1D_br423")
 shader_parameter/stepm = 40
 
-[sub_resource type="Gradient" id="Gradient_0pmb7"]
+[sub_resource type="Gradient" id="Gradient_nqw60"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_br423"]
-gradient = SubResource("Gradient_0pmb7")
+gradient = SubResource("Gradient_nqw60")
 width = 360
 height = 360
 
@@ -149,9 +151,15 @@ transform = Transform3D(7.2323, 0, 3.41962, 0, 8, 0, -3.41962, 0, 7.2323, 17.277
 manager = NodePath("../levm")
 id = 4
 
+[node name="Puasemenu" parent="." instance=ExtResource("9_br423")]
+offset_left = -1002.0
+offset_right = -1002.0
+
 [node name="SubViewport2" type="SubViewport" parent="."]
 transparent_bg = true
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -16.125, 245.417, -43.44)
 cull_mask = 1048572
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("10_nqw60")]

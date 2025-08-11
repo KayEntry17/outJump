@@ -26,6 +26,8 @@ func trans(i,j):
 	i.get_child(2).text=str(r3)
 func rebuildlists():
 	print(Leaderboard.leaderbsort)
+	if !Leaderboard.leaderbsort.has(updtime):
+		Leaderboard.leaderbsort[updtime]=["0","0","0"]
 	var i2=Leaderboard.leaderbsort[updtime]
 	for i in $NinePatchRect/MarginContainer/Control4/VBoxContainer.get_children():
 		i.queue_free()
